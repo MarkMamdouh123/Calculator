@@ -1,6 +1,6 @@
 ﻿namespace Calculator
 {
-    partial class Calculaor
+    partial class Calculator
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calculaor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calculator));
             this.zeroButton = new System.Windows.Forms.Button();
             this.dotButto = new System.Windows.Forms.Button();
             this.equalButto = new System.Windows.Forms.Button();
@@ -342,7 +342,7 @@
             this.numLabel.TabIndex = 24;
             this.numLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // Calculaor
+            // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -375,7 +375,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Calculaor";
+            this.Name = "Calculator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
             this.Load += new System.EventHandler(this.Calculaor_Load);

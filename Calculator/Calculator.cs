@@ -17,7 +17,7 @@ namespace Calculator
    
     
     
-    public partial class Calculaor : Form
+    public partial class Calculator : Form
     {
         bool clearAndInsert = false;
         int clicked = 0;//Determine if the user clicked on the number once after clicking the Sign
@@ -27,7 +27,7 @@ namespace Calculator
         double temperproryNumber = 0;
        
         bool plusOperator = false;
-        public Calculaor()
+        public Calculator()
         {
             InitializeComponent();
 
