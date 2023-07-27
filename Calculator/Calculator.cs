@@ -15,7 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 namespace Calculator
 {
    
-    
+    //when 5*6*.
     
     public partial class Calculator : Form
     {
@@ -25,7 +25,7 @@ namespace Calculator
         double num2=0;
         double result;
         double temporaryNumber = 0;
-        
+        bool opClicked; 
        
 
         bool plusOperator = false;
@@ -183,6 +183,7 @@ namespace Calculator
                         result = num1 / num2;
                         resultLabel.Text = result.ToString();
                         numLabel.Text = result.ToString();
+                        opClicked = true;
                     }
                 }
             }
@@ -190,7 +191,9 @@ namespace Calculator
             clearAndInsert = true;
             operLabel.Visible = true;
             operLabel.Text = "÷";
-            numLabel.Text = resultLabel.Text;
+            num1 = double.Parse(resultLabel.Text);
+            resultLabel.Text = num1.ToString();
+            numLabel.Text = num1.ToString();
             clicked = 0;
         }
 
@@ -219,6 +222,7 @@ namespace Calculator
                         result = num1 + num2;
                         resultLabel.Text = result.ToString();
                         operLabel.Text = "×";
+                        opClicked = true;
 
                     }
                     else if (operLabel.Text == "-")
@@ -229,6 +233,7 @@ namespace Calculator
                         result = num1 - num2;
                         resultLabel.Text = result.ToString();
                         operLabel.Text = "×";
+                        opClicked = true;
 
                     }
                     else if (operLabel.Text == "÷")
@@ -255,6 +260,7 @@ namespace Calculator
                             result = num1 / num2;
                             resultLabel.Text = result.ToString();
                             operLabel.Text = "×";
+                            opClicked = true;
                         }
                     }
 
@@ -270,6 +276,7 @@ namespace Calculator
                     result = num1 * num2;
                     resultLabel.Text = result.ToString();
                     numLabel.Text = result.ToString();
+                    opClicked = true;
 
                 }
             }
@@ -278,7 +285,9 @@ namespace Calculator
             clearAndInsert = true;
             operLabel.Visible = true;
             operLabel.Text = "×";
-            numLabel.Text = resultLabel.Text;
+            num1 = double.Parse(resultLabel.Text);
+            resultLabel.Text = num1.ToString();
+            numLabel.Text = num1.ToString();
             clicked = 0;
         }
 
@@ -359,6 +368,7 @@ namespace Calculator
                     result = num1 - num2;
                     resultLabel.Text = result.ToString();
                     numLabel.Text = result.ToString();
+                    opClicked = true;
 
                 }
             }
@@ -367,7 +377,9 @@ namespace Calculator
             clearAndInsert = true;
             operLabel.Visible = true;
             operLabel.Text="-";
-            numLabel.Text = resultLabel.Text;
+            num1 = double.Parse(resultLabel.Text);
+            resultLabel.Text = num1.ToString();
+            numLabel.Text = num1.ToString();
             clicked = 0;
         }
         Font originalFont;
@@ -565,6 +577,8 @@ namespace Calculator
                         result = num1 - num2;
                         resultLabel.Text = result.ToString();
                         operLabel.Text = "+";
+                        opClicked = true;
+                        
 
                     }
                     else if (operLabel.Text == "×")
@@ -575,7 +589,7 @@ namespace Calculator
                         result = num1 * num2;
                         resultLabel.Text = result.ToString();
                         operLabel.Text = "+";
-
+                        opClicked = true;
                     }
                     else if (operLabel.Text == "÷")
                     {
@@ -601,6 +615,7 @@ namespace Calculator
                             result = num1 / num2;
                             resultLabel.Text = result.ToString();
                             operLabel.Text = "+";
+                            opClicked = true;
                         }
                     }
 
@@ -617,7 +632,7 @@ namespace Calculator
                     result = num1 + num2;
                     resultLabel.Text = result.ToString();
                     numLabel.Text = result.ToString();
-
+                    opClicked = true;
                 }
             }
 
@@ -1378,7 +1393,7 @@ namespace Calculator
                 for (int j = 0; j < numLabel.Text.Length; j++)
                 {
 
-                    if (numLabel.Text[j]=='='||operLabel.Text!="")
+                    if (numLabel.Text[j]=='=')
                     {
 
                         num1 = 0;
@@ -1400,11 +1415,19 @@ namespace Calculator
             else 
             {
 
-                
-                
+                if (opClicked == true)
+                {
+                    n1 = 0;
                     resultLabel.Text = n1.ToString() + ".";
                     result = double.Parse(resultLabel.Text);
-                
+                    opClicked = false;
+
+                }
+                else
+                {
+                    resultLabel.Text = n1.ToString() + ".";
+                    result = double.Parse(resultLabel.Text);
+                }
             }
             
         }
