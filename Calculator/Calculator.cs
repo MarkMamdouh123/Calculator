@@ -24,8 +24,10 @@ namespace Calculator
         double num1=0;
         double num2=0;
         double result;
-        double temperproryNumber = 0;
+        double temporaryNumber = 0;
+        
        
+
         bool plusOperator = false;
         public Calculator()
         {
@@ -141,7 +143,7 @@ namespace Calculator
                         operLabel.Text = "÷";
 
                     }
-                    else
+                    else if (operLabel.Text == "+")
                     {
                         num1 = double.Parse(numLabel.Text);
                         num2 = double.Parse(resultLabel.Text);
@@ -152,17 +154,36 @@ namespace Calculator
 
 
                 }
+               
                 else
                 {
 
+                    
                     num1 = double.Parse(numLabel.Text);
 
                     num2 = double.Parse(resultLabel.Text);
-                   
-                    result = num1 / num2;
-                    resultLabel.Text = result.ToString();
-                    numLabel.Text = result.ToString();
+                    if (num2 == 0)
+                    {
+                        originalFont = resultLabel.Font;
+                        resultLabel.Font = new Font("Arial", 17, FontStyle.Bold);
+                        resultLabel.Text = "Cannot Divide By Zero";
+                        plusButto.Enabled = false;
+                        negateButto.Enabled = false;
+                        squareButto.Enabled = false;
+                        minusButto.Enabled = false;
+                        multiplyButto.Enabled = false;
+                        divideButto.Enabled = false;
+                        dotButto.Enabled = false;
+                        return;
 
+                    }
+                    else
+                    {
+
+                        result = num1 / num2;
+                        resultLabel.Text = result.ToString();
+                        numLabel.Text = result.ToString();
+                    }
                 }
             }
             plusOperator = true;
@@ -210,13 +231,31 @@ namespace Calculator
                         operLabel.Text = "×";
 
                     }
-                    else
+                    else if (operLabel.Text == "÷")
                     {
                         num1 = double.Parse(numLabel.Text);
                         num2 = double.Parse(resultLabel.Text);
-                        result = num1 / num2;
-                        resultLabel.Text = result.ToString();
-                        operLabel.Text = "×";
+                        if (num2 == 0)
+                        {
+                            originalFont = resultLabel.Font;
+                            resultLabel.Font = new Font("Arial", 17, FontStyle.Bold);
+                            resultLabel.Text = "Cannot Divide By Zero";
+                            plusButto.Enabled = false;
+                            negateButto.Enabled = false;
+                            squareButto.Enabled = false;
+                            minusButto.Enabled = false;
+                            multiplyButto.Enabled = false;
+                            divideButto.Enabled = false;
+                            dotButto.Enabled = false;
+                            return;
+
+                        }
+                        else
+                        {
+                            result = num1 / num2;
+                            resultLabel.Text = result.ToString();
+                            operLabel.Text = "×";
+                        }
                     }
 
 
@@ -262,6 +301,7 @@ namespace Calculator
                 {
                     if (operLabel.Text == "+")
                     {
+                        
                         num1 = double.Parse(numLabel.Text);
                         num2 = double.Parse(resultLabel.Text);
                         result = num1 + num2;
@@ -271,7 +311,7 @@ namespace Calculator
                     }
                     else if (operLabel.Text == "×")
                     {
-
+                        
                         num1 = double.Parse(numLabel.Text);
                         num2 = double.Parse(resultLabel.Text);
                         result = num1 * num2;
@@ -279,15 +319,34 @@ namespace Calculator
                         operLabel.Text = "-";
 
                     }
-                    else
+                    else if(operLabel.Text == "÷")
                     {
+                        
                         num1 = double.Parse(numLabel.Text);
                         num2 = double.Parse(resultLabel.Text);
-                        result = num1 / num2;
-                        resultLabel.Text = result.ToString();
-                        operLabel.Text = "-";
-                    }
+                        if (num2 == 0)
+                        {
+                            originalFont = resultLabel.Font;
+                            resultLabel.Font = new Font("Arial", 17, FontStyle.Bold);
+                            resultLabel.Text = "Cannot Divide By Zero";
+                            plusButto.Enabled = false;
+                            negateButto.Enabled = false;
+                            squareButto.Enabled = false;
+                            minusButto.Enabled = false;
+                            multiplyButto.Enabled = false;
+                            divideButto.Enabled = false;
+                            dotButto.Enabled = false;
+                            return;
 
+                        }
+                        else
+                        {
+                            result = num1 / num2;
+                            resultLabel.Text = result.ToString();
+                            operLabel.Text = "-";
+                        }
+                    }
+                    
 
                 }
                 else
@@ -338,21 +397,20 @@ namespace Calculator
                     else if (operLabel.Text == "-")
                     {
 
-
-
+                        
 
                         num1 = double.Parse(resultLabel.Text);
 
-                        result = num1 - temperproryNumber;
+                        result = num1 - temporaryNumber;
                         resultLabel.Text = result.ToString();
                         numLabel.Text = num1.ToString() + "-" + num2.ToString() + "=";
                         break;
                     }
                     else if (operLabel.Text == "×")
                     {
-                        int plusSignIndex = numLabel.Text.IndexOf("×") + 1;
+                        int multiplySignIndex = numLabel.Text.IndexOf("×") + 1;
                         int equalSignIndex = numLabel.Text.IndexOf("=");
-                        string secondNumber = numLabel.Text.Substring(plusSignIndex, equalSignIndex - plusSignIndex);
+                        string secondNumber = numLabel.Text.Substring(multiplySignIndex, equalSignIndex - multiplySignIndex);
                         num2 = double.Parse(secondNumber);
 
                         num1 = double.Parse(resultLabel.Text);
@@ -363,9 +421,9 @@ namespace Calculator
                     }
                     else if (operLabel.Text == "÷")
                     {
-                        int plusSignIndex = numLabel.Text.IndexOf("÷") + 1;
+                        int divideSignIndex = numLabel.Text.IndexOf("÷") + 1;
                         int equalSignIndex = numLabel.Text.IndexOf("=");
-                        string secondNumber = numLabel.Text.Substring(plusSignIndex, equalSignIndex - plusSignIndex);
+                        string secondNumber = numLabel.Text.Substring(divideSignIndex, equalSignIndex - divideSignIndex);
                         num2 = double.Parse(secondNumber);
 
                         num1 = double.Parse(resultLabel.Text);
@@ -400,6 +458,8 @@ namespace Calculator
                 multiplyButto.Enabled = true;
                 divideButto.Enabled = true;
                 dotButto.Enabled = true;
+                numLabel.Text = "";
+                operLabel.Text = "";
 
             }
             else
@@ -420,7 +480,7 @@ namespace Calculator
                 {
                     num1 = double.Parse(numLabel.Text);
                     num2 = double.Parse(resultLabel.Text);
-                    temperproryNumber = num2;
+                    temporaryNumber = num2;
                     result = num1 - num2;
                     numLabel.Text = num1.ToString() + "-" + num2.ToString() + "=";
                     operLabel.Visible = false;
@@ -517,13 +577,31 @@ namespace Calculator
                         operLabel.Text = "+";
 
                     }
-                    else
+                    else if (operLabel.Text == "÷")
                     {
                         num1 = double.Parse(numLabel.Text);
                         num2 = double.Parse(resultLabel.Text);
-                        result = num1 / num2;
-                        resultLabel.Text = result.ToString();
-                        operLabel.Text = "+";
+                        if (num2 == 0)
+                        {
+                            originalFont = resultLabel.Font;
+                            resultLabel.Font = new Font("Arial", 17, FontStyle.Bold);
+                            resultLabel.Text = "Cannot Divide By Zero";
+                            plusButto.Enabled = false;
+                            negateButto.Enabled = false;
+                            squareButto.Enabled = false;
+                            minusButto.Enabled = false;
+                            multiplyButto.Enabled = false;
+                            divideButto.Enabled = false;
+                            dotButto.Enabled = false;
+                            return;
+
+                        }
+                        else
+                        {
+                            result = num1 / num2;
+                            resultLabel.Text = result.ToString();
+                            operLabel.Text = "+";
+                        }
                     }
 
 
@@ -534,11 +612,8 @@ namespace Calculator
                     num1 = double.Parse(numLabel.Text);
 
                     num2 = double.Parse(resultLabel.Text);
-                    if (operLabel.Text != "+")
-                    {
 
-
-                    }
+                    
                     result = num1 + num2;
                     resultLabel.Text = result.ToString();
                     numLabel.Text = result.ToString();
@@ -562,7 +637,21 @@ namespace Calculator
 
         private void oneButto_Click(object sender, EventArgs e)
         {
-          
+            if (resultLabel.Text == "Cannot Divide By Zero")
+            {
+                resultLabel.Font = originalFont;
+                resultLabel.Text = "0";
+                plusButto.Enabled = true;
+                negateButto.Enabled = true;
+                squareButto.Enabled = true;
+                minusButto.Enabled = true;
+                multiplyButto.Enabled = true;
+                divideButto.Enabled = true;
+                dotButto.Enabled = true;
+                numLabel.Text = "";
+                operLabel.Text = "";
+
+            }
             clicked++;//increasing the clicks as if it is one click it goes to be the the same number or in clearing state
 
             clearAndInsert = false;
@@ -632,7 +721,21 @@ namespace Calculator
 
         private void zeroButton_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "Cannot Divide By Zero")
+            {
+                resultLabel.Font = originalFont;
+                resultLabel.Text = "0";
+                plusButto.Enabled = true;
+                negateButto.Enabled = true;
+                squareButto.Enabled = true;
+                minusButto.Enabled = true;
+                multiplyButto.Enabled = true;
+                divideButto.Enabled = true;
+                dotButto.Enabled = true;
+                numLabel.Text = "";
+                operLabel.Text = "";
 
+            }
             clicked++;//increasing the clicks as if it is one click it goes to be the the same number or in clearing state
 
 
@@ -673,6 +776,21 @@ namespace Calculator
 
         private void twoButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "Cannot Divide By Zero")
+            {
+                resultLabel.Font = originalFont;
+                resultLabel.Text = "0";
+                plusButto.Enabled = true;
+                negateButto.Enabled = true;
+                squareButto.Enabled = true;
+                minusButto.Enabled = true;
+                multiplyButto.Enabled = true;
+                divideButto.Enabled = true;
+                dotButto.Enabled = true;
+                numLabel.Text = "";
+                operLabel.Text = "";
+
+            }
             clicked++;//increasing the clicks as if it is one click it goes to be the the same number or in clearing state
             clearAndInsert = false;
             // This part is when user clicks the number on clearing state and in the presence of one zero only
@@ -733,6 +851,21 @@ namespace Calculator
 
         private void threeButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "Cannot Divide By Zero")
+            {
+                resultLabel.Font = originalFont;
+                resultLabel.Text = "0";
+                plusButto.Enabled = true;
+                negateButto.Enabled = true;
+                squareButto.Enabled = true;
+                minusButto.Enabled = true;
+                multiplyButto.Enabled = true;
+                divideButto.Enabled = true;
+                dotButto.Enabled = true;
+                numLabel.Text = "";
+                operLabel.Text = "";
+
+            }
             clicked++;//increasing the clicks as if it is one click it goes to be the the same number or in clearing state
             clearAndInsert = false;
             // This part is when user clicks the number on clearing state and in the presence of one zero only
@@ -771,7 +904,7 @@ namespace Calculator
 
                 
                 
-                  //  if (resultLabel.Text.EndsWith(".")) { resultLabel.Text += "3"; }
+                
                   
                     
                    else
@@ -801,6 +934,21 @@ namespace Calculator
 
             private void fourButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "Cannot Divide By Zero")
+            {
+                resultLabel.Font = originalFont;
+                resultLabel.Text = "0";
+                plusButto.Enabled = true;
+                negateButto.Enabled = true;
+                squareButto.Enabled = true;
+                minusButto.Enabled = true;
+                multiplyButto.Enabled = true;
+                divideButto.Enabled = true;
+                dotButto.Enabled = true;
+                numLabel.Text = "";
+                operLabel.Text = "";
+
+            }
             clicked++;//increasing the clicks as if it is one click it goes to be the the same number or in clearing state
             clearAndInsert = false;
             // This part is when user clicks the number on clearing state and in the presence of one zero only
@@ -860,6 +1008,21 @@ namespace Calculator
 
         private void fiveButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "Cannot Divide By Zero")
+            {
+                resultLabel.Font = originalFont;
+                resultLabel.Text = "0";
+                plusButto.Enabled = true;
+                negateButto.Enabled = true;
+                squareButto.Enabled = true;
+                minusButto.Enabled = true;
+                multiplyButto.Enabled = true;
+                divideButto.Enabled = true;
+                dotButto.Enabled = true;
+                numLabel.Text = "";
+                operLabel.Text = "";
+
+            }
             clicked++;//increasing the clicks as if it is one click it goes to be the the same number or in clearing state
             clearAndInsert = false;
             // This part is when user clicks the number on clearing state and in the presence of one zero only
@@ -918,6 +1081,21 @@ namespace Calculator
 
         private void sixButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "Cannot Divide By Zero")
+            {
+                resultLabel.Font = originalFont;
+                resultLabel.Text = "0";
+                plusButto.Enabled = true;
+                negateButto.Enabled = true;
+                squareButto.Enabled = true;
+                minusButto.Enabled = true;
+                multiplyButto.Enabled = true;
+                divideButto.Enabled = true;
+                dotButto.Enabled = true;
+                numLabel.Text = "";
+                operLabel.Text = "";
+
+            }
             clicked++;//increasing the clicks as if it is one click it goes to be the the same number or in clearing state
             clearAndInsert = false;
             // This part is when user clicks the number on clearing state and in the presence of one zero only
@@ -976,6 +1154,21 @@ namespace Calculator
 
         private void sevenButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "Cannot Divide By Zero")
+            {
+                resultLabel.Font = originalFont;
+                resultLabel.Text = "0";
+                plusButto.Enabled = true;
+                negateButto.Enabled = true;
+                squareButto.Enabled = true;
+                minusButto.Enabled = true;
+                multiplyButto.Enabled = true;
+                divideButto.Enabled = true;
+                dotButto.Enabled = true;
+                numLabel.Text = "";
+                operLabel.Text = "";
+
+            }
             clicked++;//increasing the clicks as if it is one click it goes to be the the same number or in clearing state
             clearAndInsert = false;
             // This part is when user clicks the number on clearing state and in the presence of one zero only
@@ -1023,6 +1216,21 @@ namespace Calculator
 
         private void eightButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "Cannot Divide By Zero")
+            {
+                resultLabel.Font = originalFont;
+                resultLabel.Text = "0";
+                plusButto.Enabled = true;
+                negateButto.Enabled = true;
+                squareButto.Enabled = true;
+                minusButto.Enabled = true;
+                multiplyButto.Enabled = true;
+                divideButto.Enabled = true;
+                dotButto.Enabled = true;
+                numLabel.Text = "";
+                operLabel.Text = "";
+
+            }
             clicked++;//increasing the clicks as if it is one click it goes to be the the same number or in clearing state
             clearAndInsert = false;
             // This part is when user clicks the number on clearing state and in the presence of one zero only
@@ -1082,6 +1290,21 @@ namespace Calculator
 
         private void nineButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "Cannot Divide By Zero")
+            {
+                resultLabel.Font = originalFont;
+                resultLabel.Text = "0";
+                plusButto.Enabled = true;
+                negateButto.Enabled = true;
+                squareButto.Enabled = true;
+                minusButto.Enabled = true;
+                multiplyButto.Enabled = true;
+                divideButto.Enabled = true;
+                dotButto.Enabled = true;
+                numLabel.Text = "";
+                operLabel.Text = "";
+
+            }
             clicked++;//increasing the clicks as if it is one click it goes to be the the same number or in clearing state
             clearAndInsert = false;
             // This part is when user clicks the number on clearing state and in the presence of one zero only
@@ -1155,7 +1378,7 @@ namespace Calculator
                 for (int j = 0; j < numLabel.Text.Length; j++)
                 {
 
-                    if (numLabel.Text[j]=='=')
+                    if (numLabel.Text[j]=='='||operLabel.Text!="")
                     {
 
                         num1 = 0;
@@ -1166,6 +1389,7 @@ namespace Calculator
                     }
 
                 }
+                
             }
             if (dotCount == true) 
             {
@@ -1175,8 +1399,8 @@ namespace Calculator
             }
             else 
             {
+
                 
-               
                 
                     resultLabel.Text = n1.ToString() + ".";
                     result = double.Parse(resultLabel.Text);
@@ -1235,7 +1459,7 @@ namespace Calculator
         {
             num1=double.Parse(resultLabel.Text);
             result = Math.Pow(num1, 2);
-            numLabel.Text = "sqr(" + num1 + ")";
+            numLabel.Text = result.ToString();
             resultLabel.Text=result.ToString();
         }
     }

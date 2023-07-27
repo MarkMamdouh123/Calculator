@@ -3,10 +3,10 @@ D:\Microsoft visual projects\Calculator\Calculator\bin\Debug\Calculator.exe
 D:\Microsoft visual projects\Calculator\Calculator\bin\Debug\Calculator.pdb
 D:\Microsoft visual projects\Calculator\Calculator\obj\Debug\Calculator.csproj.AssemblyReference.cache
 D:\Microsoft visual projects\Calculator\Calculator\obj\Debug\Calculator.csproj.SuggestedBindingRedirects.cache
-D:\Microsoft visual projects\Calculator\Calculator\obj\Debug\Calculator.Calculaor.resources
 D:\Microsoft visual projects\Calculator\Calculator\obj\Debug\Calculator.aboutUsForm.resources
 D:\Microsoft visual projects\Calculator\Calculator\obj\Debug\Calculator.Properties.Resources.resources
 D:\Microsoft visual projects\Calculator\Calculator\obj\Debug\Calculator.csproj.GenerateResource.cache
 D:\Microsoft visual projects\Calculator\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
 D:\Microsoft visual projects\Calculator\Calculator\obj\Debug\Calculator.exe
 D:\Microsoft visual projects\Calculator\Calculator\obj\Debug\Calculator.pdb
+D:\Microsoft visual projects\Calculator\Calculator\obj\Debug\Calculator.Calculator.resources
