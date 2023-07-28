@@ -1541,7 +1541,7 @@ namespace Calculator
 
         private void negateButto_Click(object sender, EventArgs e)
         {
-           
+            clicked = 2;
 
 
 
