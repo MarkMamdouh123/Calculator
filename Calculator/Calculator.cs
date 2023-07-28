@@ -14,8 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace Calculator
 {
-   
-    //when 5*6*.
+
     
     public partial class Calculator : Form
     {
@@ -26,6 +25,7 @@ namespace Calculator
         double result;
         double temporaryNumber = 0;
         bool opClicked; 
+        bool sqrBt=false;
        
 
         bool plusOperator = false;
@@ -109,6 +109,7 @@ namespace Calculator
         }
         private void divideButto_Click(object sender, EventArgs e)
         {
+            sqrBt = true;
             if (clicked > 0 && plusOperator == true)
             {
                 if (numLabel.Text == "")
@@ -179,6 +180,22 @@ namespace Calculator
                     }
                     else
                     {
+                        for (int i = 0; i < numLabel.Text.Length; i++)
+                        {
+                            if (numLabel.Text[i] == '=')
+                            {
+                                numLabel.Text = ""; plusOperator = true;
+                                clearAndInsert = true;
+                                operLabel.Visible = true;
+                                operLabel.Text = "÷";
+                                num1 = double.Parse(resultLabel.Text);
+                                resultLabel.Text = num1.ToString();
+                                numLabel.Text = num1.ToString();
+                                clicked = 0;
+                                return;
+                            }
+
+                        }
 
                         result = num1 / num2;
                         resultLabel.Text = result.ToString();
@@ -199,7 +216,8 @@ namespace Calculator
 
         private void multiplyButto_Click(object sender, EventArgs e)
         {
-
+           
+            sqrBt = true;
             if (clicked > 0 && plusOperator == true)
             {
                 if (numLabel.Text == "")
@@ -268,6 +286,22 @@ namespace Calculator
                 }
                 else
                 {
+                    for (int i = 0; i < numLabel.Text.Length; i++)
+                    {
+                        if (numLabel.Text[i] == '=')
+                        {
+                            numLabel.Text = ""; plusOperator = true;
+                            clearAndInsert = true;
+                            operLabel.Visible = true;
+                            operLabel.Text = "×";
+                            num1 = double.Parse(resultLabel.Text);
+                            resultLabel.Text = num1.ToString();
+                            numLabel.Text = num1.ToString();
+                            clicked = 0;
+                            return;
+                        }
+
+                    }
 
                     num1 = double.Parse(numLabel.Text);
 
@@ -276,7 +310,7 @@ namespace Calculator
                     result = num1 * num2;
                     resultLabel.Text = result.ToString();
                     numLabel.Text = result.ToString();
-                    opClicked = true;
+                   
 
                 }
             }
@@ -293,6 +327,7 @@ namespace Calculator
 
         private void minusButto_Click(object sender, EventArgs e)
         {
+            sqrBt = true;
             if (clicked > 0 && plusOperator == true)
             {
                 if (numLabel.Text == "") 
@@ -360,6 +395,22 @@ namespace Calculator
                 }
                 else
                 {
+                    for (int i = 0; i < numLabel.Text.Length; i++)
+                    {
+                        if (numLabel.Text[i] == '=')
+                        {
+                            numLabel.Text = ""; plusOperator = true;
+                            clearAndInsert = true;
+                            operLabel.Visible = true;
+                            operLabel.Text = "-";
+                            num1 = double.Parse(resultLabel.Text);
+                            resultLabel.Text = num1.ToString();
+                            numLabel.Text = num1.ToString();
+                            clicked = 0;
+                            return;
+                        }
+
+                    }
 
                     num1 = double.Parse(numLabel.Text);
 
@@ -555,6 +606,7 @@ namespace Calculator
         }
         private void plusButto_Click(object sender, EventArgs e)
         {
+            sqrBt = true;
             if (clicked > 0 && plusOperator == true)
             {
                 if (numLabel.Text == "")
@@ -623,6 +675,22 @@ namespace Calculator
                 }
                 else
                 {
+                    for (int i = 0; i < numLabel.Text.Length; i++)
+                    {
+                        if (numLabel.Text[i] == '=')
+                        {
+                            numLabel.Text = ""; plusOperator = true;
+                            clearAndInsert = true;
+                            operLabel.Visible = true;
+                            operLabel.Text = "+";
+                            num1 = double.Parse(resultLabel.Text);
+                            resultLabel.Text = num1.ToString();
+                            numLabel.Text = num1.ToString();
+                            clicked = 0;
+                            return;
+                        }
+
+                    }
 
                     num1 = double.Parse(numLabel.Text);
 
@@ -1393,7 +1461,7 @@ namespace Calculator
                 for (int j = 0; j < numLabel.Text.Length; j++)
                 {
 
-                    if (numLabel.Text[j]=='=')
+                    if (numLabel.Text[j]=='='||clicked==0)
                     {
 
                         num1 = 0;
@@ -1480,10 +1548,61 @@ namespace Calculator
 
         private void squareButto_Click(object sender, EventArgs e)
         {
-            num1=double.Parse(resultLabel.Text);
-            result = Math.Pow(num1, 2);
-            numLabel.Text = result.ToString();
-            resultLabel.Text=result.ToString();
+            num1 = double.Parse(resultLabel.Text);
+           
+           double sqrResult = Math.Pow(num1, 2);
+            if (sqrBt == true)
+            {
+                
+
+                if (operLabel.Text == "+")
+                {
+                    resultLabel.Text = sqrResult.ToString();
+                    sqrBt = false;
+                    clicked = 2;
+                }
+                else if (operLabel.Text == "-")
+                {
+                    resultLabel.Text = sqrResult.ToString();
+                    sqrBt = false;
+                    clicked = 2;
+                }
+                else if (operLabel.Text == "÷")
+                {
+                    if (num2 == 0)
+                    {
+                        originalFont = resultLabel.Font;
+                        resultLabel.Font = new Font("Arial", 17, FontStyle.Bold);
+                        resultLabel.Text = "Cannot Divide By Zero";
+                        plusButto.Enabled = false;
+                        negateButto.Enabled = false;
+                        squareButto.Enabled = false;
+                        minusButto.Enabled = false;
+                        multiplyButto.Enabled = false;
+                        divideButto.Enabled = false;
+                        dotButto.Enabled = false;
+                        return;
+
+                    }
+                    else
+                    {
+                        resultLabel.Text = sqrResult.ToString();
+                        sqrBt = false;
+                        clicked = 2;
+                    }
+                }
+                else 
+                {
+                  resultLabel.Text = sqrResult.ToString();
+                    sqrBt = false;
+                    clicked = 2;
+                }
+            }
+            else 
+            {
+                
+                resultLabel.Text = sqrResult.ToString();
+            }
         }
     }
 }
