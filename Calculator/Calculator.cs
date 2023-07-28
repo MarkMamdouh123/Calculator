@@ -1490,7 +1490,7 @@ namespace Calculator
 
                 if (opClicked == true)
                 {
-                    n1 = 0;
+                    n1 = decimal.Parse(resultLabel.Text);
                     resultLabel.Text = n1.ToString() + ".";
                     result = double.Parse(resultLabel.Text);
                     opClicked = false;
@@ -1498,6 +1498,7 @@ namespace Calculator
                 }
                 else
                 {
+                    n1 = decimal.Parse(resultLabel.Text);
                     resultLabel.Text = n1.ToString() + ".";
                     result = double.Parse(resultLabel.Text);
                 }
