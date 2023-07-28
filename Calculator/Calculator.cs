@@ -1461,12 +1461,17 @@ namespace Calculator
                 for (int j = 0; j < numLabel.Text.Length; j++)
                 {
 
-                    if (numLabel.Text[j]=='='||clicked==0)
+                    if (numLabel.Text[j] == '=' || clicked == 0)
                     {
 
                         num1 = 0;
                         resultLabel.Text = num1.ToString() + '.';
                         result = double.Parse(resultLabel.Text);
+                        if (numLabel.Text.EndsWith("="))
+                        {
+                            numLabel.Text = "";
+                        }
+                        break;
              
 
                     }
