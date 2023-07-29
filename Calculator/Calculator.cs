@@ -67,8 +67,11 @@ namespace Calculator
                 string str = resultLabel.Text;
                    if (resultLabel.Text.Length == 2 && resultLabel.Text[0] == '-')
                 {
-                    resultLabel.Text = "0";
-
+                    if (numLabel.Text.EndsWith("=")) { return; }
+                    else
+                    {
+                        resultLabel.Text = "0";
+                    }
                 }
               else  if (str.Length > 1)
                 {
@@ -99,11 +102,14 @@ namespace Calculator
               
                 else
                 {
-                   
-                    if ((resultLabel.Text.Length == 1 || resultLabel.Text == "" ))
-                    {
-                        resultLabel.Text = "0";
 
+                    if ((resultLabel.Text.Length == 1 || resultLabel.Text == ""))
+                    {
+                        if (numLabel.Text.EndsWith("=")) { return; }
+                        else
+                        {
+                            resultLabel.Text = "0";
+                        }
                     }
                 }
 
@@ -1545,14 +1551,22 @@ namespace Calculator
 
         private void negateButto_Click(object sender, EventArgs e)
         {
-            clicked = 2;
-
-
-
-            result = double.Parse(resultLabel.Text);
+            if (numLabel.Text.EndsWith("=")) {
+                result = double.Parse(resultLabel.Text);
                 result = -result;
                 resultLabel.Text = result.ToString();
-            
+            }
+
+            else
+            {
+                clicked = 2;
+
+
+
+                result = double.Parse(resultLabel.Text);
+                result = -result;
+                resultLabel.Text = result.ToString();
+            }
             
         }
 
