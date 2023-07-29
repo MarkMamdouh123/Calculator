@@ -1568,7 +1568,7 @@ namespace Calculator
         private void squareButto_Click(object sender, EventArgs e)
         {
             num1 = double.Parse(resultLabel.Text);
-           
+            
            double sqrResult = Math.Pow(num1, 2);
             if(numLabel.Text.EndsWith("=")) 
             {
@@ -1594,28 +1594,12 @@ namespace Calculator
                 }
                 else if (operLabel.Text == "÷")
                 {
-                    if (num2 == 0)
-                    {
-                        originalFont = resultLabel.Font;
-                        resultLabel.Font = new Font("Arial", 17, FontStyle.Bold);
-                        resultLabel.Text = "Cannot Divide By Zero";
-                        plusButto.Enabled = false;
-                        negateButto.Enabled = false;
-                        squareButto.Enabled = false;
-                        minusButto.Enabled = false;
-                        multiplyButto.Enabled = false;
-                        divideButto.Enabled = false;
-                        dotButto.Enabled = false;
-                        return;
-
-                    }
-                    else
-                    {
+                   
                         resultLabel.Text = sqrResult.ToString();
                         sqrBt = false;
                         clicked = 2;
 
-                    }
+                    
                 }
                 else 
                 {
