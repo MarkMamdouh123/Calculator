@@ -611,6 +611,8 @@ namespace Calculator
                     num1 = double.Parse(resultLabel.Text);
                     numLabel.Text = num1 + "=";
                     resultLabel.Text = num1.ToString();
+                    operLabel.Text = "";
+                    
                 }
             }
         }
