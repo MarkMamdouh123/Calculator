@@ -72,13 +72,16 @@ namespace Calculator
                 }
               else  if (str.Length > 1)
                 {
-                    resultLabel.Text = "";
-
-                    for (int i = 0; i < str.Length - 1; i++)
+                    if (numLabel.Text.EndsWith("=")) { return; }
+                    else
                     {
+                        resultLabel.Text = "";
+
+                        for (int i = 0; i < str.Length - 1; i++)
+                        {
 
 
-                        resultLabel.Text += str[i];
+                            resultLabel.Text += str[i];
 
 
 
@@ -87,8 +90,9 @@ namespace Calculator
 
 
 
+                        }
+                        clicked = 2;
                     }
-
 
                 }
 
