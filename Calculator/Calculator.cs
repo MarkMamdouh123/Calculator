@@ -1577,6 +1577,12 @@ namespace Calculator
             num1 = double.Parse(resultLabel.Text);
            
            double sqrResult = Math.Pow(num1, 2);
+            if(numLabel.Text.EndsWith("=")) 
+            {
+                resultLabel.Text = sqrResult.ToString();
+                return;
+
+            }
             if (sqrBt == true)
             {
                 
@@ -1615,6 +1621,7 @@ namespace Calculator
                         resultLabel.Text = sqrResult.ToString();
                         sqrBt = false;
                         clicked = 2;
+
                     }
                 }
                 else 
@@ -1622,6 +1629,7 @@ namespace Calculator
                   resultLabel.Text = sqrResult.ToString();
                     sqrBt = false;
                     clicked = 2;
+                   
                 }
             }
             else 
