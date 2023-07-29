@@ -456,13 +456,10 @@ namespace Calculator
                     foundEqual = true;
                     if (operLabel.Text == "+")
                     {
-                        int plusSignIndex = numLabel.Text.IndexOf("+") + 1;
-                        int equalSignIndex = numLabel.Text.IndexOf("=");
-                        string secondNumber = numLabel.Text.Substring(plusSignIndex, equalSignIndex - plusSignIndex);
-                        num2 = double.Parse(secondNumber);
+                  
 
                         num1 = double.Parse(resultLabel.Text);
-                        result = num1 + num2;
+                        result = num1 + temporaryNumber;
                         resultLabel.Text = result.ToString();
                         numLabel.Text = num1.ToString() + "+" + num2.ToString() + "=";
                         break;
@@ -481,26 +478,19 @@ namespace Calculator
                     }
                     else if (operLabel.Text == "×")
                     {
-                        int multiplySignIndex = numLabel.Text.IndexOf("×") + 1;
-                        int equalSignIndex = numLabel.Text.IndexOf("=");
-                        string secondNumber = numLabel.Text.Substring(multiplySignIndex, equalSignIndex - multiplySignIndex);
-                        num2 = double.Parse(secondNumber);
+                        
 
                         num1 = double.Parse(resultLabel.Text);
-                        result = num1 * num2;
+                        result = num1 * temporaryNumber;
                         resultLabel.Text = result.ToString();
                         numLabel.Text = num1.ToString() + "×" + num2.ToString() + "=";
                         break;
                     }
                     else if (operLabel.Text == "÷")
                     {
-                        int divideSignIndex = numLabel.Text.IndexOf("÷") + 1;
-                        int equalSignIndex = numLabel.Text.IndexOf("=");
-                        string secondNumber = numLabel.Text.Substring(divideSignIndex, equalSignIndex - divideSignIndex);
-                        num2 = double.Parse(secondNumber);
-
+                     
                         num1 = double.Parse(resultLabel.Text);
-                        result = num1 * num2;
+                        result = num1 / temporaryNumber;
                         resultLabel.Text = result.ToString();
                         numLabel.Text = num1.ToString() + "÷" + num2.ToString() + "=";
                         break;
@@ -542,6 +532,7 @@ namespace Calculator
                 {
                     num1 = double.Parse(numLabel.Text);
                     num2 = double.Parse(resultLabel.Text);
+                    temporaryNumber = num2;
                     result = num1 + num2;
                     numLabel.Text = num1.ToString() + "+" + num2.ToString() + "=";
                     operLabel.Visible = false;
@@ -565,6 +556,7 @@ namespace Calculator
                 {
                     num1 = double.Parse(numLabel.Text);
                     num2 = double.Parse(resultLabel.Text);
+                    temporaryNumber = num2;
                     result = num1 * num2;
                     numLabel.Text = num1.ToString() + "×" + num2.ToString() + "=";
                     operLabel.Visible = false;
@@ -577,6 +569,7 @@ namespace Calculator
 
                     num1 = double.Parse(numLabel.Text);
                     num2 = double.Parse(resultLabel.Text);
+                    temporaryNumber = num2;
                     if (num2 == 0)
                     {
                         originalFont = resultLabel.Font;
@@ -1461,8 +1454,8 @@ namespace Calculator
         {
             
             bool dotCount = false;
-            decimal n1;
-            n1 = decimal.Parse(resultLabel.Text);
+            double n1;
+            n1 = double.Parse(resultLabel.Text);
            for(int i = 0; i < resultLabel.Text.Length; i++) 
             {
                 if (resultLabel.Text[i] == '.') 
@@ -1502,7 +1495,7 @@ namespace Calculator
 
                 if (opClicked == true)
                 {
-                    n1 = decimal.Parse(resultLabel.Text);
+                    n1 = double.Parse(resultLabel.Text);
                     resultLabel.Text = n1.ToString() + ".";
                     result = double.Parse(resultLabel.Text);
                     opClicked = false;
@@ -1510,7 +1503,7 @@ namespace Calculator
                 }
                 else
                 {
-                    n1 = decimal.Parse(resultLabel.Text);
+                    n1 = double.Parse(resultLabel.Text);
                     resultLabel.Text = n1.ToString() + ".";
                     result = double.Parse(resultLabel.Text);
                 }
