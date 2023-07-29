@@ -119,6 +119,7 @@ namespace Calculator
         }
         private void divideButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") { return; }
             sqrBt = true;
             if (clicked > 0 && plusOperator == true)
             {
@@ -226,7 +227,7 @@ namespace Calculator
 
         private void multiplyButto_Click(object sender, EventArgs e)
         {
-           
+            if (resultLabel.Text == "∞") { return; }
             sqrBt = true;
             if (clicked > 0 && plusOperator == true)
             {
@@ -337,6 +338,7 @@ namespace Calculator
 
         private void minusButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") { return; }
             sqrBt = true;
             if (clicked > 0 && plusOperator == true)
             {
@@ -611,6 +613,7 @@ namespace Calculator
         }
         private void plusButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") {  return; }
             sqrBt = true;
             if (clicked > 0 && plusOperator == true)
             {
@@ -1503,6 +1506,7 @@ namespace Calculator
                 }
                 else
                 {
+                    if (resultLabel.Text == "∞") { resultLabel.Text = "0.";return; }
                     n1 = double.Parse(resultLabel.Text);
                     resultLabel.Text = n1.ToString() + ".";
                     result = double.Parse(resultLabel.Text);
@@ -1546,6 +1550,7 @@ namespace Calculator
 
         private void negateButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") {  return; }
             if (numLabel.Text.EndsWith("=")) {
                 result = double.Parse(resultLabel.Text);
                 result = -result;
