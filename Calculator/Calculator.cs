@@ -449,7 +449,7 @@ namespace Calculator
         
         private void equalButto_Click(object sender, EventArgs e)
         {
-        
+            if (resultLabel.Text == "∞") { return; }
             bool foundEqual = false;
             for (int i = 0; i < numLabel.Text.Length; i++)
             {
@@ -728,6 +728,7 @@ namespace Calculator
 
         private void oneButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") { return; }
             if (resultLabel.Text == "Cannot Divide By Zero")
             {
                 resultLabel.Font = originalFont;
@@ -812,6 +813,7 @@ namespace Calculator
 
         private void zeroButton_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") { return; }
             if (resultLabel.Text == "Cannot Divide By Zero")
             {
                 resultLabel.Font = originalFont;
@@ -834,7 +836,6 @@ namespace Calculator
             if (resultLabel.Text == "0"||clearAndInsert==true)
             {
                 clearAndInsert=false;
-
                 resultLabel.Text = "0";
                    for(int i = 0;i < numLabel.Text.Length; i++) 
             {
@@ -867,6 +868,7 @@ namespace Calculator
 
         private void twoButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") { return; }
             if (resultLabel.Text == "Cannot Divide By Zero")
             {
                 resultLabel.Font = originalFont;
@@ -942,6 +944,7 @@ namespace Calculator
 
         private void threeButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") { return; }
             if (resultLabel.Text == "Cannot Divide By Zero")
             {
                 resultLabel.Font = originalFont;
@@ -1025,6 +1028,7 @@ namespace Calculator
 
             private void fourButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") { return; }
             if (resultLabel.Text == "Cannot Divide By Zero")
             {
                 resultLabel.Font = originalFont;
@@ -1099,6 +1103,7 @@ namespace Calculator
 
         private void fiveButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") { return; }
             if (resultLabel.Text == "Cannot Divide By Zero")
             {
                 resultLabel.Font = originalFont;
@@ -1172,6 +1177,7 @@ namespace Calculator
 
         private void sixButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") { return; }
             if (resultLabel.Text == "Cannot Divide By Zero")
             {
                 resultLabel.Font = originalFont;
@@ -1245,6 +1251,7 @@ namespace Calculator
 
         private void sevenButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") { return; }
             if (resultLabel.Text == "Cannot Divide By Zero")
             {
                 resultLabel.Font = originalFont;
@@ -1307,6 +1314,7 @@ namespace Calculator
 
         private void eightButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") { return; }
             if (resultLabel.Text == "Cannot Divide By Zero")
             {
                 resultLabel.Font = originalFont;
@@ -1381,6 +1389,7 @@ namespace Calculator
 
         private void nineButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") { return; }
             if (resultLabel.Text == "Cannot Divide By Zero")
             {
                 resultLabel.Font = originalFont;
@@ -1455,7 +1464,7 @@ namespace Calculator
 
         private void dotButto_Click(object sender, EventArgs e)
         {
-            
+             clearAndInsert = false;
             bool dotCount = false;
             double n1;
             n1 = double.Parse(resultLabel.Text);
@@ -1572,6 +1581,7 @@ namespace Calculator
 
         private void squareButto_Click(object sender, EventArgs e)
         {
+            if (resultLabel.Text == "∞") { return; }
             num1 = double.Parse(resultLabel.Text);
             
            double sqrResult = Math.Pow(num1, 2);
