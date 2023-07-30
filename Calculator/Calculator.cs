@@ -78,6 +78,9 @@ namespace Calculator
                     if (numLabel.Text.EndsWith("=")) { return; }
                     else
                     {
+                        int E = resultLabel.Text.IndexOf("E");
+                        if(E!=1) { return; }
+                        
                         resultLabel.Text = "";
 
                         for (int i = 0; i < str.Length - 1; i++)
@@ -1464,7 +1467,8 @@ namespace Calculator
 
         private void dotButto_Click(object sender, EventArgs e)
         {
-             clearAndInsert = false;
+            if (resultLabel.Text == "∞") { return; }
+            clearAndInsert = false;
             bool dotCount = false;
             double n1;
             n1 = double.Parse(resultLabel.Text);
@@ -1480,6 +1484,7 @@ namespace Calculator
 
                     if (numLabel.Text[j] == '=' || clicked == 0)
                     {
+                      
 
                         num1 = 0;
                         resultLabel.Text = num1.ToString() + '.';
@@ -1507,6 +1512,7 @@ namespace Calculator
 
                 if (opClicked == true)
                 {
+                    
                     n1 = double.Parse(resultLabel.Text);
                     resultLabel.Text = n1.ToString() + ".";
                     result = double.Parse(resultLabel.Text);
@@ -1515,7 +1521,7 @@ namespace Calculator
                 }
                 else
                 {
-                    if (resultLabel.Text == "∞") { resultLabel.Text = "0.";return; }
+                 
                     n1 = double.Parse(resultLabel.Text);
                     resultLabel.Text = n1.ToString() + ".";
                     result = double.Parse(resultLabel.Text);
