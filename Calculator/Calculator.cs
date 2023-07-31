@@ -79,7 +79,7 @@ namespace Calculator
                     else
                     {
                         int E = resultLabel.Text.IndexOf("E");
-                        if(E!=1) { return; }
+                        if(E!=-1) { return; }
                         
                         resultLabel.Text = "";
 
